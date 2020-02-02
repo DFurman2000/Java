@@ -19,11 +19,13 @@ public class tempScanner {
         System.out.println("Next reading: ");
         String s = in.nextLine();
         try {
-            if (s.endsWith("C")) {
-                int temp = Integer.parseInt(s.substring(0, s.length() - 1));
-                System.out.println("Temperature = " + temp);
-            } else {
-                throw new NumberFormatException();
+            for (int i = 0; i < 6; i++) {
+                if (s.endsWith("C")) {
+                    int temp = Integer.parseInt(s.substring(0, s.length() - 1));
+                    System.out.println("Temperature = " + temp);
+                } else {
+                    throw new NumberFormatException();
+                }
             }
         }
         catch (NumberFormatException e) {
