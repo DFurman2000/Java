@@ -1,86 +1,79 @@
 package week2;
 
-public class team {
+public class team implements Comparable <team> {
+
     private String name;
-    private int pointsFor;
-    private int pointsAgainst;
-    private int pointsDifference;
+
     private int won;
     private int lost;
     private int drawn;
-    private int games;
-    private int points;
 
+    private int pointsFor;
+    private int pointsAgainst;
 
     public team(String name) {
         this.name = name;
+        this.won = 0;
+        this.lost = 0;
+        this.drawn = 0;
         this.pointsFor = 0;
         this.pointsAgainst = 0;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public int getWon() { return won; }
 
-    public int getPointsFor() {
-        return pointsFor;
-    }
+    public int getLost() { return lost; }
 
-    public void setPointsFor(int pointsFor) {
-        this.pointsFor = pointsFor;
-    }
+    public int getDrawn() { return drawn; }
 
-    public int getPointsAgainst() {
-        return pointsAgainst;
-    }
+    public int getPlayed() { return this.getWon() + this.getLost() + this.getDrawn(); }
 
-    public void setPointsAgainst(int pointsAgainst) {
-        this.pointsAgainst = pointsAgainst;
-    }
+    public int getPointsFor() { return pointsFor; }
 
-    public double difference() {
-        pointsDifference = getPointsFor() - getPointsAgainst();
-        return pointsDifference;
-    }
+    public int getPointsAgainst() { return pointsAgainst; }
 
-    public int teamWon() {
-        if (getPointsFor() > getPointsAgainst())
-        {
-            won = won + 1;
+    public int getDifference() { return this.getPointsFor() - this.getPointsAgainst(); }
+
+    public int getPoints() { return this.getWon() * 2 + this.getDrawn(); }
+
+    public void play (int ptsFor, int ptsAgainst ) {
+
+        this.pointsFor += ptsFor;
+        this.pointsAgainst += ptsAgainst;
+
+        if (ptsFor > ptsAgainst) {
+            this.won++;
         }
-        return won;
-    }
-
-    public int teamLost() {
-        if (getPointsFor() < getPointsAgainst())
-        {
-            lost = lost + 1;
+        else if (ptsFor < ptsAgainst) {
+            this.lost++;
         }
-        return lost;
-    }
-
-    public int teamDrawn() {
-        if (getPointsFor() == getPointsAgainst())
-        {
-            drawn = drawn + 1;
+        else {
+            this.drawn++;
         }
-        return drawn;
     }
 
-    public int numberOfGames() {
-        games = won + lost + drawn;
-        return games;
+    @Override
+    public int compareTo (team otherTeam) {
+
+        if (otherTeam.getPoints() != this.getPoints()) {
+            return otherTeam.getPoints() - this.getPoints();
+        }
+        else {
+            return otherTeam.getDifference() - this.getDifference();
+        }
     }
 
-    public int numberOfPoints() {
-        points = (won * 2) + drawn;
-        return points;
+    public void printLeagueTable () {
+
+        final String formatString = "%-22s %4d %4d %4d %4d %6d %6d %6d %4d";
+
+        System.out.println(String.format(formatString, this.name,
+                this.getPlayed(),
+                this.getWon(), this.getLost() + this.getDrawn(),
+                this.getPointsFor(), this.getPointsAgainst(),
+                this.getDifference(),
+                this.getPoints()));
+        }
     }
-
-}
-
-
