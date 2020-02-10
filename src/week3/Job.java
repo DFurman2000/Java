@@ -60,7 +60,6 @@ public class Job {
         }
     }
 
-    @Override
     public int compareTo (Job other) {
         if ( other.getPriority() != this.getPriority()) {
             return other.getPriority() - this.getPriority();

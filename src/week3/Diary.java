@@ -35,8 +35,5 @@ public class Diary {
         }
     }
 
-    @Override
-    public void sortDiary() {
 
-    }
 }
