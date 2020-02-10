@@ -68,4 +68,12 @@ public class Job implements Comparable<Job> {
                 this.priority, this.complete));
     }
     // Prints the results as a table (kind of.)
+
+    public String display () {
+        if (this.isComplete())
+            return String.format(getName(), getDescription(), getPriority(), "finished");
+        else {
+            return String.format(getName(), getDescription(), getPriority());
+        }
+    }
 }
