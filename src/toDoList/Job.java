@@ -63,7 +63,7 @@ public class Job implements Comparable<Job> {
     // This sorts the priority in descending order
 
     public void printFormatted () {
-        final String formatString = "%-4s %-12s %4s %8s";
+        final String formatString = "%-25s %-40s %4s %20s";
         System.out.println(String.format(formatString, this.name, this.description,
                 this.priority, this.complete));
     }
