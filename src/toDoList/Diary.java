@@ -34,13 +34,7 @@ public class Diary {
     }
 
     public void purgeDiary () {
-        Iterator<Job> it = jobs.iterator();
-        while(it.hasNext()) {
-            Job j = it.next();
-            if(j.isComplete()) {
-                it.remove();
-            }
-        }
+        jobs.removeIf(Job::isComplete);
     }
 
     public void searchDiary (String search) {
