@@ -9,17 +9,19 @@ public class CurrentAccount extends BankAccount {
         this.overdraft = overdraft;
     }
 
+    @Override
     public void withdraw (double amount) {
-        if (amount > 0) {
-            if (amount < overdraft + getBalance()) {
-                //System.out.println("There is not enough in your balance to withdraw, so we will withdraw from your overdraft");
-                super.setBalance();
-            } else {
-                System.out.println("Sorry, you do not have enough in your balance or overdraft");
-            }
+        if (balance > amount) {
+            this.balance -= amount;
+            System.out.println("You have withdrawn £" + amount);
+        }
+        else if (amount < overdraft + getBalance()) {
+            System.out.println("This will go into your overdraft because you do not have enough within your balance");
+            this.balance -= amount;
+            System.out.println("You have withdrawn £" + amount);
         }
         else {
-            System.out.println("Cannot withdraw a negative number");
+            System.out.println("Sorry, you do not have enough in your balance or overdraft");
         }
     }
 
@@ -27,11 +29,13 @@ public class CurrentAccount extends BankAccount {
         return this.overdraft;
     }
 
+
     public static void main(String[] args) {
         CurrentAccount ca = new CurrentAccount("Dan", "123", "123", 100, 1000);
-        // ca.deposit(20);
-        // System.out.println("The balance is now £" + ca.getBalance() + " and the overdraft is now £" + ca.getOverdraft());
-        ca.withdraw(100);
-        System.out.println(ca.getBalance());
+
+        System.out.println("You can withdraw up to £" + (ca.balance + ca.overdraft));
+
+        ca.withdraw(1000);
+        System.out.println("Your balance is now " + ca.getBalance());
     }
 }

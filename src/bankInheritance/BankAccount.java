@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class BankAccount {
 
     private String accountHolderName, sortCode, accountNumber;
-    private double balance;
+    public double balance;
 
     public BankAccount(String accountHolderName, String sortCode, String accountNumber, double balance) {
         this.accountHolderName = accountHolderName;
@@ -51,6 +51,7 @@ public class BankAccount {
 
     public void deposit (double amount) {
         if (amount > 0) {
+            System.out.println("You have deposited £" + amount);
             this.balance += amount;
         }
         else {
@@ -60,8 +61,8 @@ public class BankAccount {
 
     public void withdraw (double am) {
         if (balance > am) {
-            System.out.println("Enter an amount to withdraw: " + am);
             this.balance -= am;
+            System.out.println("You have withdrawn £" + am);
         }
         else {
             System.out.println("Don't withdraw more than your account!");

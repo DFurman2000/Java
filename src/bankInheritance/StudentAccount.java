@@ -9,14 +9,19 @@ public class StudentAccount extends BankAccount{
         this.overdraft = 500;
     }
 
-    public void withdraw(double amount) {
-        if (amount > super.getBalance()) {
-            if (amount < overdraft) {
-                System.out.println("There is not enough in your balance to withdraw, so we will withdraw from your overdraft");
-                this.overdraft -= amount;
-            } else {
-                System.out.println("Sorry, you do not have enough in your balance or overdraft");
-            }
+    @Override
+    public void withdraw (double amount) {
+        if (balance > amount) {
+            this.balance -= amount;
+            System.out.println("You have withdrawn £" + amount);
+        }
+        else if (amount < overdraft + getBalance()) {
+            System.out.println("This will go into your overdraft because you do not have enough within your balance");
+            this.balance -= amount;
+            System.out.println("You have withdrawn £" + amount);
+        }
+        else {
+            System.out.println("Sorry, you do not have enough in your balance or overdraft");
         }
     }
 
@@ -26,8 +31,10 @@ public class StudentAccount extends BankAccount{
 
     public static void main(String[] args) {
         StudentAccount sa = new StudentAccount("Dan", "123", "1101", 200);
-        sa.withdraw(200);
 
-        System.out.println("The balance is now " + sa.getBalance() + " and the overdraft is now " + sa.getOverdraft());
+        System.out.println("You can withdraw up to £" + (sa.balance + sa.overdraft));
+
+        sa.withdraw(650);
+        System.out.println("Balance is now " + sa.getBalance());
     }
 }
