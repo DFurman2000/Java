@@ -20,7 +20,7 @@ public class YoungSaversAccount extends BankAccount{
 
     public static void main(String[] args) {
         YoungSaversAccount ysa = new YoungSaversAccount("Dan", "123", "1234", 90, false);
-        ysa.withdraw(50);
+        ysa.deposit(50);
 
         System.out.println("Your balance is now £" + ysa.getBalance());
     }

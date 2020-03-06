@@ -1,6 +1,5 @@
 package bankInheritance;
 
-import java.util.Scanner;
 
 public class BankAccount {
 
@@ -17,9 +16,7 @@ public class BankAccount {
     public BankAccount() {
     }
 
-    public String getAccountHolderName() {
-        return accountHolderName;
-    }
+    public String getAccountHolderName() { return accountHolderName; }
 
     public void setAccountHolderName(String accountHolderName) {
         this.accountHolderName = accountHolderName;
@@ -67,6 +64,11 @@ public class BankAccount {
         else {
             System.out.println("Don't withdraw more than your account!");
         }
+    }
+
+
+    public void printBankAccounts() {
+        final String formatString = "%-18s, %4s, %12s, %16s, %20d, %24d, %28b, %32d";
     }
 }
 
