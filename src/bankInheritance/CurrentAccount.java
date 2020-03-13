@@ -13,7 +13,6 @@ public class CurrentAccount extends BankAccount {
         if (amount > 0) {
             if (amount < overdraft + getBalance()) {
                 //System.out.println("There is not enough in your balance to withdraw, so we will withdraw from your overdraft");
-                super.setBalance();
             } else {
                 System.out.println("Sorry, you do not have enough in your balance or overdraft");
             }
