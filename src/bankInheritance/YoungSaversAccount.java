@@ -11,7 +11,7 @@ public class YoungSaversAccount extends BankAccount{
 
     public double getBalance() {
         if (super.getBalance() > 100) {
-            System.out.println("You are trying to deposit more than the balance limit (100.) Please try again.");
+            System.out.println("You are trying to deposit more than the balance limit (£100.) Please try again.");
         } else {
             return super.getBalance();
         }
@@ -20,8 +20,8 @@ public class YoungSaversAccount extends BankAccount{
 
     public static void main(String[] args) {
         YoungSaversAccount ysa = new YoungSaversAccount("Dan", "123", "1234", 90, false);
-        ysa.deposit(5);
+        ysa.deposit(50);
 
-        System.out.println(ysa.getBalance());
+        System.out.println("Your balance is now £" + ysa.getBalance());
     }
 }
